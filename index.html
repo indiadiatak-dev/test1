@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국가공무원인재개발원 안내 포털 🍊</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Cute Rounded Font (Jua & Pretendard) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@700;800;900&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #ff7a18;
+      --primary-hover: #ff6000;
+      --primary-light: #fff3e6;
+      --primary-subtle: #ffe6cc;
+      --secondary: #ffb03a;
+      --accent-coral: #ff5e62;
+      --accent-yellow: #ffd166;
+      --warm-bg: #fffbf5;
+      --card-bg: #ffffff;
+      --text-main: #3d2c1d;
+      --text-sub: #786452;
+      --border-warm: #ffe0cc;
+      --shadow-cute: 0 8px 24px rgba(255, 122, 24, 0.12);
+      --shadow-bubble: 0 4px 0 #e65c00;
+      --radius-cute: 24px;
+      --radius-round: 50px;
+      --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: var(--warm-bg);
+      color: var(--text-main);
+      line-height: 1.65;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(#ffd8b3 1.2px, transparent 1.2px), 
+        radial-gradient(#ffe4cc 1.2px, var(--warm-bg) 1.2px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+    }
+
+    /* Cute Headings font */
+    h1, h2, h3, h4, .cute-font, .logo-title, .tab-btn {
+      font-family: 'Jua', 'Pretendard', cursive, sans-serif;
+      letter-spacing: 0.2px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Cute Banner */
+    .top-cute-bar {
+      background: linear-gradient(90deg, #ff9233, #ff6b3d);
+      color: #fff;
+      padding: 8px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(255, 107, 61, 0.2);
+    }
+    .top-cute-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge-pill {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 3px 12px;
+      border-radius: var(--radius-round);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .top-links a:hover {
+      transform: scale(1.08);
+      display: inline-block;
+    }
+
+    /* Navigation */
+    header {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--border-warm);
+      box-shadow: var(--shadow-cute);
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 78px;
+    }
+
+    /* Mascot Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .mascot-avatar {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #ffa439, #ff6714);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 14px rgba(255, 103, 20, 0.3);
+      position: relative;
+      animation: floatMascot 3s ease-in-out infinite;
+    }
+    @keyframes floatMascot {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(4deg); }
+    }
+    .logo-title {
+      font-size: 1.35rem;
+      color: #e65100;
+      line-height: 1.1;
+    }
+    .logo-subtitle {
+      font-size: 0.76rem;
+      color: #9c6c49;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-round);
+      transition: var(--transition);
+      display: inline-block;
+    }
+    .nav-links a:hover {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .nav-links a.active-link {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 3px 10px rgba(255, 122, 24, 0.35);
+    }
+
+    .btn-cute-jump {
+      background: linear-gradient(135deg, #ff7a18, #ff6000);
+      color: white;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: var(--radius-round);
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 12px rgba(255, 106, 0, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+    }
+    .btn-cute-jump:hover {
+      background: linear-gradient(135deg, #ff6000, #e65100);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(230, 81, 0, 0.3);
+    }
+    .btn-cute-jump:active {
+      transform: translateY(1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0 70px;
+      position: relative;
+    }
+    .hero-box {
+      background: linear-gradient(135deg, #fff3e6 0%, #ffe0cc 50%, #ffd4b8 100%);
+      border: 3px solid #ffbe98;
+      border-radius: 36px;
+      padding: 50px 45px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(255, 122, 24, 0.15);
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      align-items: center;
+      gap: 30px;
+    }
+    /* Cute floating fruit stickers */
+    .sticker {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+    }
+    .sticker-1 { top: 20px; right: 30px; font-size: 2.8rem; animation: bounceSlow 2.5s infinite; }
+    .sticker-2 { bottom: 25px; left: 35px; font-size: 2rem; opacity: 0.8; }
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #ff6f00;
+      color: white;
+      padding: 6px 16px;
+      border-radius: var(--radius-round);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 8px rgba(255, 111, 0, 0.25);
+    }
+    .hero-content h2 {
+      font-size: 2.7rem;
+      color: #923400;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .hero-content h2 span {
+      color: #ff5722;
+      background: linear-gradient(120deg, transparent 65%, #ffd166 65%);
+      display: inline;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #63432b;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    /* Mascot illustration card in hero */
+    .hero-art-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 3px dashed #ffab70;
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: var(--shadow-cute);
+      backdrop-filter: blur(6px);
+      position: relative;
+    }
+    .mascot-big {
+      font-size: 5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: wiggle 2s infinite ease-in-out;
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-6deg) scale(1.05); }
+      75% { transform: rotate(6deg) scale(1.05); }
+    }
+    .hero-speech {
+      background: #ff7a18;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 18px;
+      font-family: 'Jua', cursive;
+      font-size: 1.1rem;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .hero-speech::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px 8px 0;
+      border-style: solid;
+      border-color: #ff7a18 transparent;
+    }
+    .hero-art-sub {
+      font-size: 0.88rem;
+      color: #8c6239;
+      font-weight: 600;
+    }
+
+    /* Quick Badges inside Hero */
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill-item {
+      background: white;
+      border: 2px solid #ffbe98;
+      color: #923400;
+      padding: 8px 16px;
+      border-radius: var(--radius-round);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 3px 6px rgba(255, 122, 24, 0.08);
+    }
+
+    /* Section Headers */
+    .section-wrap {
+      padding: 60px 0;
+    }
+    .cute-title-center {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .cute-sub {
+      color: #ff6f00;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      padding: 5px 16px;
+      border-radius: var(--radius-round);
+      margin-bottom: 10px;
+      border: 1px solid #ffd6b3;
+    }
+    .cute-title-center h3 {
+      font-size: 2.3rem;
+      color: #802800;
+    }
+    .cute-title-center p {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      margin-top: 8px;
+    }
+
+    /* 3 Core Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .val-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border-warm);
+      border-radius: var(--radius-cute);
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-cute);
+      transition: var(--transition);
+      position: relative;
+    }
+    .val-card:hover {
+      transform: translateY(-8px);
+      border-color: #ff994d;
+      box-shadow: 0 14px 28px rgba(255, 122, 24, 0.2);
+    }
+    .val-emoji {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #fff3e6, #ffe0cc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 12px rgba(255, 122, 24, 0.15);
+      border: 2px solid #ffd8b3;
+    }
+    .val-card h4 {
+      font-size: 1.35rem;
+      color: #a33800;
+      margin-bottom: 10px;
+    }
+    .val-card p {
+      font-size: 0.93rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* Tasks Section (주요 업무) */
+    .tasks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+    .task-bubble {
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      border: 2px solid #ffcca3;
+      box-shadow: 0 8px 20px rgba(255, 122, 24, 0.08);
+      position: relative;
+      transition: var(--transition);
+    }
+    .task-bubble:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(255, 122, 24, 0.18);
+    }
+    .task-bubble-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .task-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff7a18, #ff9436);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 10px rgba(255, 122, 24, 0.3);
+      flex-shrink: 0;
+    }
+    .task-title-group h4 {
+      font-size: 1.35rem;
+      color: #923400;
+      line-height: 1.2;
+    }
+    .task-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #fff0e0;
+      color: #ff6000;
+      padding: 3px 10px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .task-bubble p {
+      color: #554030;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .task-checklist {
+      list-style: none;
+      background: #fffcf7;
+      border: 1px dashed #ffd8b3;
+      border-radius: 18px;
+      padding: 14px 18px;
+    }
+    .task-checklist li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: #4a3424;
+    }
+    .task-checklist li:last-child {
+      margin-bottom: 0;
+    }
+    .task-checklist li::before {
+      content: '🍊';
+      position: absolute;
+      left: 0;
+      font-size: 0.85rem;
+    }
+
+    /* Training Stages */
+    .ladder-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .ladder-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 18px;
+      text-align: center;
+      border: 2px solid #ffd8b8;
+      box-shadow: var(--shadow-cute);
+      transition: var(--transition);
+      position: relative;
+    }
+    .ladder-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: #ff7a18;
+    }
+    .ladder-step {
+      font-family: 'Jua', cursive;
+      font-size: 0.9rem;
+      color: white;
+      background: #ff7a18;
+      display: inline-block;
+      padding: 3px 14px;
+      border-radius: var(--radius-round);
+      margin-bottom: 12px;
+    }
+    .ladder-card .emoji-big {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .ladder-card h5 {
+      font-size: 1.15rem;
+      color: #8c3200;
+      margin-bottom: 6px;
+    }
+    .ladder-card p {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    /* Directions (찾아오시는 길) Orange Container */
+    .directions-container {
+      background: white;
+      border: 3px solid #ffbe98;
+      border-radius: 36px;
+      box-shadow: 0 16px 36px rgba(255, 122, 24, 0.12);
+      overflow: hidden;
+    }
+
+    /* Cute Orange Tabs */
+    .tab-nav {
+      display: flex;
+      background: #fff5eb;
+      padding: 10px 10px 0;
+      border-bottom: 3px solid #ffd8b8;
+      gap: 8px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 16px 20px;
+      border: 2px solid transparent;
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
+      background: transparent;
+      color: #9c6c49;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+    .tab-btn:hover {
+      background: #ffe9d6;
+      color: var(--primary);
+    }
+    .tab-btn.active {
+      background: white;
+      color: #d84300;
+      border-color: #ffd8b8;
+      border-bottom: 3px solid white;
+      margin-bottom: -3px;
+      box-shadow: 0 -4px 12px rgba(255, 122, 24, 0.08);
+    }
+    .tab-cute-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #ffe0cc;
+      color: #cc4400;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+    }
+    .tab-btn.active .tab-cute-badge {
+      background: #ff6f00;
+      color: white;
+    }
+
+    .tab-panel {
+      padding: 40px;
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+      animation: popIn 0.35s ease-out;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Campus Info Layout */
+    .campus-showcase {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+    .campus-sticker-card {
+      background: #fff8f0;
+      border: 2px solid #ffd6b3;
+      border-radius: 26px;
+      padding: 26px;
+    }
+    .campus-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      color: #923400;
+      margin-bottom: 18px;
+    }
+    .meta-row {
+      display: flex;
+      padding: 10px 0;
+      border-bottom: 1px dashed #ffd6b3;
+      font-size: 0.95rem;
+    }
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+    .meta-k {
+      width: 105px;
+      font-weight: 700;
+      color: #d84300;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .meta-v {
+      color: #4a3424;
+      flex-grow: 1;
+    }
+
+    .map-frame-box {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 3px solid #ffbe98;
+      box-shadow: var(--shadow-cute);
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .map-iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+    .map-footer-btn {
+      padding: 12px 18px;
+      background: #fff3e6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .map-footer-btn a {
+      color: #ff6000;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .map-footer-btn a:hover {
+      text-decoration: underline;
+    }
+
+    /* Ways to visit (교통수단 카드) */
+    .ways-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .way-box {
+      background: #fffcf7;
+      border: 2px solid #ffe0cc;
+      border-radius: 22px;
+      padding: 22px;
+      transition: var(--transition);
+    }
+    .way-box:hover {
+      border-color: #ff944d;
+      transform: translateY(-4px);
+    }
+    .way-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed #ffd8b8;
+    }
+    .way-icon {
+      font-size: 1.8rem;
+    }
+    .way-head h5 {
+      font-size: 1.15rem;
+      color: #923400;
+    }
+    .way-desc {
+      font-size: 0.9rem;
+      color: #554030;
+      line-height: 1.6;
+    }
+    .bubble-alert {
+      background: #fff1d6;
+      border-left: 4px solid #ff9900;
+      padding: 8px 12px;
+      border-radius: 0 12px 12px 0;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #8f4b00;
+      font-weight: 500;
+    }
+    .bubble-alert.danger {
+      background: #ffebeb;
+      border-left-color: #ff4d4f;
+      color: #a8071a;
+    }
+
+    /* Campus Notice Box */
+    .cute-notice-bar {
+      margin-top: 30px;
+      background: linear-gradient(135deg, #fff3e6, #ffe6d1);
+      border: 2px dashed #ff994d;
+      border-radius: 22px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .notice-mascot {
+      font-size: 2.4rem;
+      animation: bounceSlow 2s infinite;
+    }
+    .notice-text h5 {
+      font-size: 1.1rem;
+      color: #923400;
+      margin-bottom: 4px;
+    }
+    .notice-text p {
+      font-size: 0.92rem;
+      color: #63432b;
+    }
+
+    /* Quick Call Section */
+    .call-cute-banner {
+      background: linear-gradient(135deg, #ff7a18 0%, #ff5214 100%);
+      color: white;
+      border-radius: 32px;
+      padding: 45px 30px;
+      text-align: center;
+      margin-top: 60px;
+      box-shadow: 0 15px 30px rgba(255, 82, 20, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+    .call-cute-banner h3 {
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+    }
+    .call-cute-banner p {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-bottom: 28px;
+    }
+    .call-cards-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .phone-card {
+      background: rgba(255, 255, 255, 0.96);
+      color: #8c2a00;
+      padding: 18px 28px;
+      border-radius: 24px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+      min-width: 240px;
+      transition: var(--transition);
+    }
+    .phone-card:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+    .phone-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ff6000;
+      background: #fff0e0;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .phone-number {
+      font-family: 'Jua', cursive;
+      font-size: 1.6rem;
+      color: #d84300;
+      letter-spacing: 0.5px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #382414;
+      color: #debca0;
+      padding: 50px 0 30px;
+      margin-top: 80px;
+      border-top: 5px solid #ff7a18;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 35px;
+    }
+    .footer-brand h4 {
+      font-size: 1.35rem;
+      color: #ffab70;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer-col h5 {
+      font-size: 1.05rem;
+      color: #ffe0cc;
+      margin-bottom: 14px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+    .footer-col a {
+      color: #debca0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .footer-col a:hover {
+      color: #ff994d;
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #4f3522;
+      padding-top: 25px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #bfa186;
+    }
+
+    /* Floating cute back to top */
+    .cute-fab {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 52px;
+      height: 52px;
+      background: #ff7a18;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 6px 16px rgba(255, 122, 24, 0.4);
+      cursor: pointer;
+      border: 3px solid white;
+      text-decoration: none;
+      transition: var(--transition);
+      z-index: 999;
+    }
+    .cute-fab:hover {
+      transform: translateY(-4px) scale(1.1);
+      background: #ff5722;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-box {
+        grid-template-columns: 1fr;
+        padding: 35px 25px;
+      }
+      .campus-showcase {
+        grid-template-columns: 1fr;
+      }
+      .ladder-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .values-grid, .tasks-grid, .ways-grid {
+        grid-template-columns: 1fr;
+      }
+      .tab-btn {
+        font-size: 1.05rem;
+        padding: 12px 8px;
+      }
+      .hero-content h2 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top cute bar -->
+  <div class="top-cute-bar">
+    <div class="container">
+      <div>
+        <span class="badge-pill">🍊 인사혁신처 소속</span>
+        <span>대한민국 공직 인재를 키우는 행복한 배움터! ✨</span>
+      </div>
+      <div class="top-links">
+        <a href="https://www.nhi.go.kr" target="_blank" rel="noopener">🏠 공식 홈페이지</a>
+        <a href="https://e-learning.nhi.go.kr" target="_blank" rel="noopener">💻 나라배움터</a>
+        <a href="#directions">🗺️ 캠퍼스 길찾기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand-logo">
+        <div class="mascot-avatar">🍊</div>
+        <div>
+          <div class="logo-title">국가공무원인재개발원</div>
+          <div class="logo-subtitle">NHI • 사랑과 열정의 공공인재 요람 🌱</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about" class="active-link">인재원 소개</a></li>
+        <li><a href="#tasks">주요 업무</a></li>
+        <li><a href="#ladder">성장 로드맵</a></li>
+        <li><a href="#directions">찾아오는 길</a></li>
+      </ul>
+      <div>
+        <a href="#directions" class="btn-cute-jump">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>찾아오시는 길</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-box">
+        <div class="sticker sticker-1">🍊</div>
+        <div class="sticker sticker-2">🌟</div>
+
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i class="fas fa-sparkles"></i> 대한민국 공무원의 든든한 러닝메이트
+          </div>
+          <h2>국민 곁의 따뜻한 공직자,<br><span>주황빛 에너지</span>로 함께 키워가요!</h2>
+          <p>
+            국가공무원인재개발원(NHI)은 올바른 공직가치, 미래 스마트 행정역량, 
+            그리고 글로벌 리더십을 쑥쑥 키워주는 공직자 전문 교육기관입니다.
+          </p>
+          <div class="hero-pills">
+            <div class="pill-item">🌱 1949년 창설 전통</div>
+            <div class="pill-item">🏫 진천 본원 & 과천 분원</div>
+            <div class="pill-item">🎯 전 생애주기 맞춤교육</div>
+            <div class="pill-item">🌏 글로벌 공공협력</div>
+          </div>
+        </div>
+
+        <!-- Mascot Welcome Card -->
+        <div class="hero-art-card">
+          <div class="hero-speech">안녕하세요! 인재원 마스코트 탠저린이에요 🍊</div>
+          <div class="mascot-big">🧑‍💼🍊</div>
+          <p class="hero-art-sub">"새내기 사무관부터 고위공무원까지<br>모두 힘차게 응원합니다!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Core Values (소개) -->
+  <section id="about" class="section-wrap">
+    <div class="container">
+      <div class="cute-title-center">
+        <span class="cute-sub">✨ Our Warm Mission</span>
+        <h3>인재원이 약속하는 3가지 핵심 가치</h3>
+        <p>국민을 향한 따뜻한 마음과 똑똑한 실력을 두루 갖춘 인재를 길러냅니다.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="val-card">
+          <div class="val-emoji">💖</div>
+          <h4>올바른 공직 가치</h4>
+          <p>국민에 대한 헌신과 청렴, 공정한 마음가짐을 가장 기본이자 최우선으로 가르칩니다.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-emoji">💡</div>
+          <h4>스마트 디지털 역량</h4>
+          <p>AI, 빅데이터, 디지털 대전환 시대에 발맞춰 앞서가는 혁신 행정가를 양성합니다.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-emoji">🌍</div>
+          <h4>글로벌 리더십</h4>
+          <p>세계 여러 나라의 공무원들과 우수한 K-행정 경험을 나누고 국제적 안목을 넓힙니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Tasks (주요 업무) -->
+  <section id="tasks" class="section-wrap" style="background-color: #fff6ed;">
+    <div class="container">
+      <div class="cute-title-center">
+        <span class="cute-sub">📋 What We Do</span>
+        <h3>국가공무원인재개발원의 4대 주요 업무</h3>
+        <p>공직 사회의 든든한 멘토로서 체계적이고 즐거운 배움의 여정을 총괄합니다.</p>
+      </div>
+
+      <div class="tasks-grid">
+        <!-- 1 -->
+        <div class="task-bubble">
+          <div class="task-bubble-header">
+            <div class="task-icon-circle">🌱</div>
+            <div class="task-title-group">
+              <h4>신임자 및 승진자 교육</h4>
+              <span class="task-tag">공직 입문 & 승진 필수코스</span>
+            </div>
+          </div>
+          <p>공직의 첫걸음을 떼는 새내기 공무원부터 승진 공직자에게 필수적인 직무·공직관을 전수합니다.</p>
+          <ul class="task-checklist">
+            <li><strong>5급 신임관리자과정:</strong> 행정·기술고시 합격자를 준비된 정예 사무관으로 육성!</li>
+            <li><strong>7·9급 신규임용자과정:</strong> 현장 실무 및 공직 에티켓 맞춤 훈련</li>
+            <li><strong>과장·국장 후보자과정:</strong> 팀을 이끌어갈 따뜻한 코칭 리더십 함양</li>
+          </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="task-bubble">
+          <div class="task-bubble-header">
+            <div class="task-icon-circle">👑</div>
+            <div class="task-title-group">
+              <h4>고위공무원단 역량평가 & 정책</h4>
+              <span class="task-tag">국정 리더십의 중심</span>
+            </div>
+          </div>
+          <p>국가의 주요 정책을 설계하는 고위 관리자의 정책 통찰력과 전략적 안목을 체계적으로 다듬습니다.</p>
+          <ul class="task-checklist">
+            <li><strong>고위정책과정:</strong> 거시 경제, 국정 어젠다, 갈등 해결 종합 시뮬레이션</li>
+            <li><strong>고위공무원단 역량평가(AC):</strong> 1:1 심층 롤플레잉 기반 승진 검증</li>
+            <li><strong>위기대응 리더십:</strong> 국가 재난 및 긴급 현안 대응 솔루션 훈련</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="task-bubble">
+          <div class="task-bubble-header">
+            <div class="task-icon-circle">🌏</div>
+            <div class="task-title-group">
+              <h4>글로벌 교육 & 국제 협력</h4>
+              <span class="task-tag">세계 속의 K-행정 전파</span>
+            </div>
+          </div>
+          <p>전 세계 공무원들에게 대한민국의 발전 경험을 전하고, 우리 공무원의 글로벌 협상력을 키웁니다.</p>
+          <ul class="task-checklist">
+            <li><strong>외국 공무원 초청 연수:</strong> 아시아·아프리카 등 해외 공공분야 리더 연수</li>
+            <li><strong>공공외교 역량 강화:</strong> 국제기구 협상, 영어 프레젠테이션 스킬 업</li>
+            <li><strong>해외 HRD 네트워크:</strong> OECD 등 주요 국제기관과의 정책 교류</li>
+          </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="task-bubble">
+          <div class="task-bubble-header">
+            <div class="task-icon-circle">📱</div>
+            <div class="task-title-group">
+              <h4>스마트 이러닝 & HRD 연구</h4>
+              <span class="task-tag">언제 어디서나 상시 학습</span>
+            </div>
+          </div>
+          <p>언제 어디서나 모바일과 PC로 학습할 수 있는 플랫폼과 최신 에듀테크 교육법을 연구합니다.</p>
+          <ul class="task-checklist">
+            <li><strong>나라배움터 운영:</strong> 100만 공무원을 위한 24시간 온라인 배움터</li>
+            <li><strong>AI 맞춤형 콘텐츠:</strong> 개개인의 직무에 맞춘 추천 학습 시스템 구축</li>
+            <li><strong>중앙부처 교육 컨설팅:</strong> 각 부처 교육원 교수진을 위한 티칭 코칭</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Growth Ladder -->
+  <section id="ladder" class="section-wrap">
+    <div class="container">
+      <div class="cute-title-center">
+        <span class="cute-sub">🪜 Step By Step</span>
+        <h3>공직 생애주기별 배움의 사다리</h3>
+        <p>입직의 설렘부터 고위공직자의 무게감까지, 인재원이 언제나 든든하게 받쳐줍니다!</p>
+      </div>
+
+      <div class="ladder-grid">
+        <div class="ladder-card">
+          <span class="ladder-step">STEP 1</span>
+          <span class="emoji-big">🐣</span>
+          <h5>신임 공직자</h5>
+          <p>공직가치 마인드셋 & 보고서 작성 기초</p>
+        </div>
+        <div class="ladder-card">
+          <span class="ladder-step">STEP 2</span>
+          <span class="emoji-big">🏃</span>
+          <h5>실무 핵심 인재</h5>
+          <p>정책 기획 실무 & 디지털 AI 도구 활용</p>
+        </div>
+        <div class="ladder-card">
+          <span class="ladder-step">STEP 3</span>
+          <span class="emoji-big">🤝</span>
+          <h5>과장급 리더</h5>
+          <p>동기부여 조직관리 & 대국민 소통 조율</p>
+        </div>
+        <div class="ladder-card">
+          <span class="ladder-step">STEP 4</span>
+          <span class="emoji-big">🌟</span>
+          <h5>국장·고위공직자</h5>
+          <p>국정 철학 공유 & 미래 위기대응 통찰</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directions Section (찾아오는 길) -->
+  <section id="directions" class="section-wrap" style="background-color: #fff9f2;">
+    <div class="container">
+      <div class="cute-title-center">
+        <span class="cute-sub">📍 Come Visit Us!</span>
+        <h3>찾아오시는 길 (캠퍼스 가이드)</h3>
+        <p>인재원은 <strong>충북 진천 본원</strong>과 <strong>경기 과천 분원</strong> 두 곳에 있어요! 오실 곳을 탭해 보세요 🍊</p>
+      </div>
+
+      <div class="directions-container">
+        <!-- Cute Tabs -->
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchCampus('jincheon')">
+            <span>🏫 진천 본원 (충북)</span>
+            <span class="tab-cute-badge">대규모 교육 / 리더십 메카</span>
+          </button>
+          <button class="tab-btn" onclick="switchCampus('gwacheon')">
+            <span>🌲 과천 분원 (경기)</span>
+            <span class="tab-cute-badge">글로벌연수 / 역량평가</span>
+          </button>
+        </div>
+
+        <!-- 1. 진천 본원 Panel -->
+        <div id="panel-jincheon" class="tab-panel active">
+          <div class="campus-showcase">
+            <div class="campus-sticker-card">
+              <div class="campus-badge-title">
+                <span>📍 충북 진천 본원 (진천캠퍼스)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">📮 주소</span>
+                <span class="meta-v"><strong>충청북도 진천군 덕산읍 교학로 30</strong> (충북혁신도시)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">📞 대표전화</span>
+                <span class="meta-v"><strong>043-931-6000</strong> (주간 대표)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">🌙 당직실</span>
+                <span class="meta-v">043-931-6062 (야간 및 공휴일)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">🎯 주요과정</span>
+                <span class="meta-v">5급 신임관리자과정, 국·과장 승진후보자, 인재개발 R&D</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">🚗 주차여부</span>
+                <span class="meta-v">넓은 지상·지하 주차장 보유 (교육생 차량 이용 가능) 👍</span>
+              </div>
+            </div>
+
+            <!-- Map embed -->
+            <div class="map-frame-box">
+              <iframe 
+                class="map-iframe" 
+                src="https://maps.google.com/maps?q=충청북도%20진천군%20덕산읍%20교학로%2030&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                loading="lazy">
+              </iframe>
+              <div class="map-footer-btn">
+                <span>📍 충북혁신도시 교육 클러스터 내</span>
+                <a href="https://map.kakao.com/link/search/국가공무원인재개발원 진천" target="_blank" rel="noopener">
+                  카카오맵으로 큰지도 보기 <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transport Cards for Jincheon -->
+          <div class="ways-grid">
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">🚌</span>
+                <h5>시외버스 & 대중교통</h5>
+              </div>
+              <div class="way-desc">
+                서울 남부터미널/동서울 등에서 <strong>'충북혁신도시 공용터미널'</strong>행 탑승!<br><br>
+                • 터미널에서 택시 타면 기본요금 (약 3~5분)<br>
+                • 혁신도시 순환 시내버스 이용 가능<br>
+                • 도보 이동 시 약 15분 소요
+              </div>
+            </div>
+
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">🚐</span>
+                <h5>전용 셔틀버스</h5>
+              </div>
+              <div class="way-desc">
+                교육생과 직원들을 위한 통근·입교 셔틀버스 운영 중이에요!
+                <div class="bubble-alert">
+                  <strong>세종청사 정기 셔틀:</strong><br>
+                  세종청사(국세청/인사처) ↔ 진천본원 왕복 운행
+                </div>
+                <div class="bubble-alert" style="margin-top:6px;">
+                  <strong>터미널 연계 셔틀:</strong><br>
+                  입교일 오전 & 퇴교일 오후 집중 배차
+                </div>
+              </div>
+            </div>
+
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">🚘</span>
+                <h5>자가용 네비게이션</h5>
+              </div>
+              <div class="way-desc">
+                <strong>중부고속도로:</strong><br>
+                진천 IC ▷ 21번 국도(음성방면) ▷ 혁신도시 방면 ▷ 교학로 30<br><br>
+                <strong>평택제천고속도로:</strong><br>
+                금왕꽃동네 IC ▷ 21번 국도(진천방면) ▷ 신돈삼거리 ▷ 인재원 진입
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 과천 분원 Panel -->
+        <div id="panel-gwacheon" class="tab-panel">
+          <div class="campus-showcase">
+            <div class="campus-sticker-card">
+              <div class="campus-badge-title">
+                <span>📍 경기 과천 분원 (과천캠퍼스)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">📮 주소</span>
+                <span class="meta-v"><strong>경기도 과천시 교육원로 118</strong> (구 중앙공무원교육원)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">📞 대표전화</span>
+                <span class="meta-v"><strong>02-503-8020</strong> / 02-500-8600</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">🌙 당직실</span>
+                <span class="meta-v">02-500-8620 (야간 및 공휴일)</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">🎯 주요과정</span>
+                <span class="meta-v">외국공무원 글로벌 연수, 고위공무원단 역량평가, 수도권 직무교육</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-k">⚠️ 주차제한</span>
+                <span class="meta-v" style="color: #d84300; font-weight: 700;">일반 교육생 차량 출입 불가 (대중교통 꼭 이용해 주세요!) 🚫</span>
+              </div>
+            </div>
+
+            <!-- Map embed -->
+            <div class="map-frame-box">
+              <iframe 
+                class="map-iframe" 
+                src="https://maps.google.com/maps?q=경기도%20과천시%20교육원로%20118&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                loading="lazy">
+              </iframe>
+              <div class="map-footer-btn">
+                <span>📍 4호선 정부과천청사역 인근 숲속 캠퍼스</span>
+                <a href="https://map.kakao.com/link/search/국가공무원인재개발원 과천" target="_blank" rel="noopener">
+                  카카오맵으로 큰지도 보기 <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transport Cards for Gwacheon -->
+          <div class="ways-grid">
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">🚇</span>
+                <h5>지하철 4호선</h5>
+              </div>
+              <div class="way-desc">
+                <strong>4호선 '정부과천청사역'</strong> 하차!<br><br>
+                • <strong>6번 출구</strong> 전방 100m 앞 '교육원삼거리 정류장'에서 셔틀버스 탑승 권장<br>
+                • 도보 이동 시 완만한 오르막길로 약 20~25분 소요
+              </div>
+            </div>
+
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">🚌</span>
+                <h5>청사역 셔틀버스 꿀팁</h5>
+              </div>
+              <div class="way-desc">
+                정부과천청사역과 과천캠퍼스를 오가는 전용 셔틀버스 운행 중!
+                <div class="bubble-alert">
+                  <strong>승차 위치:</strong><br>
+                  정부과천청사역 6번 출구 100m 앞 (소방서 맞은편 교육원삼거리 정류장)
+                </div>
+                <div class="bubble-alert" style="margin-top:6px;">
+                  <strong>출근·입교 시간:</strong><br>
+                  08:00 ~ 09:20 사이 5~10분 간격 수시 운행
+                </div>
+              </div>
+            </div>
+
+            <div class="way-box">
+              <div class="way-head">
+                <span class="way-icon">⛔</span>
+                <h5>자가용 이용 주의사항</h5>
+              </div>
+              <div class="way-desc">
+                과천 분원은 수려한 관악산 산림보호 및 주차공간 부족으로 <strong>일반 교육생 차량 진입이 제한</strong>됩니다.
+                <div class="bubble-alert danger">
+                  <strong>예외 차량:</strong><br>
+                  장애인 차량, 임산부 차량 등 사전 인가 등록 차량만 원내 주차 가능합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cute Notice Box -->
+      <div class="cute-notice-bar">
+        <div class="notice-mascot">📢</div>
+        <div class="notice-text">
+          <h5>잠깐! 교육생 여러분 꼭 확인해 주세요</h5>
+          <p>
+            교육 과정마다 배정된 캠퍼스(진천 본원 or 과천 분원)가 달라요. 출발하시기 전 
+            <strong>안내 공문 또는 문자 메시지의 교육 장소</strong>를 꼭 확인해 주세요! 🍊
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Call Strip -->
+  <section class="container">
+    <div class="call-cute-banner">
+      <h3>궁금한 점이 있으신가요? 편하게 전화주세요! 📞</h3>
+      <p>친절한 인재원 도우미가 언제나 따뜻하게 안내해 드릴게요.</p>
+      
+      <div class="call-cards-row">
+        <div class="phone-card">
+          <span class="phone-badge">충북 진천 본원</span>
+          <div class="phone-number">043-931-6000</div>
+        </div>
+        <div class="phone-card">
+          <span class="phone-badge">경기 과천 분원</span>
+          <div class="phone-number">02-503-8020</div>
+        </div>
+        <div class="phone-card">
+          <span class="phone-badge">나라배움터 학습지원</span>
+          <div class="phone-number">1577-2954</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>🍊 국가공무원인재개발원 (NHI)</h4>
+          <p>
+            국가공무원인재개발원은 대한민국 100만 공무원의 열정과 역량을 꽃피우는 
+            인사혁신처 소속 중앙 교육훈련 전문기관입니다.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>바로가기</h5>
+          <ul>
+            <li><a href="javascript:switchCampus('jincheon'); document.getElementById('directions').scrollIntoView();">진천 본원 길안내</a></li>
+            <li><a href="javascript:switchCampus('gwacheon'); document.getElementById('directions').scrollIntoView();">과천 분원 길안내</a></li>
+            <li><a href="#tasks">4대 핵심 업무</a></li>
+            <li><a href="#ladder">성장 로드맵</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>관련 누리집</h5>
+          <ul>
+            <li><a href="https://www.mpm.go.kr" target="_blank" rel="noopener">인사혁신처</a></li>
+            <li><a href="https://e-learning.nhi.go.kr" target="_blank" rel="noopener">나라배움터 e-러닝</a></li>
+            <li><a href="https://www.gosi.kr" target="_blank" rel="noopener">사이버국가고시센터</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© National Human Resources Development Institute. Made with Orange Energy 🍊</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Button -->
+  <a href="#" class="cute-fab" title="맨 위로 가기">🍊</a>
+
+  <!-- Script for Cute Tab Switch -->
+  <script>
+    function switchCampus(campus) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+
+      const panels = document.querySelectorAll('.tab-panel');
+      panels.forEach(p => p.classList.remove('active'));
+
+      if (campus === 'jincheon') {
+        buttons[0].classList.add('active');
+        document.getElementById('panel-jincheon').classList.add('active');
+      } else if (campus === 'gwacheon') {
+        buttons[1].classList.add('active');
+        document.getElementById('panel-gwacheon').classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
